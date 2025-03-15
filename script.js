@@ -1,4 +1,4 @@
-const apiKey = "7a25af58545969f362c925d23d41b66f";
+const apiKey = config.API_KEY;
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 // Function to fetch weather data
