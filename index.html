@@ -1,264 +1,316 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Weather App</title>
-    <link href="style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
-    <link rel="icon" type="image/x-icon" href="/logo4site/Web/icons8-globe-windows-11-color-96.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://www.w3schools.com/lib/w3-theme-indigo.css"
+    />
+    <link rel="icon" type="image/x-icon" href="/asset/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        body {
-            background-image: url(image/eberhard-grossgasteiger-NvesrDbsrL4-unsplash.jpg);
-            background-size: 100%;
-            font-family: "ubuntu", sans-serif;
-            z-index: 5;
-            opacity: 100%;
-        }
-        .heading{
-            font-weight: 700;
-            color: rgb(84, 74, 74);
-        }
-        .heading2{
-            font-weight: 500;
-            color:rgb(84, 74, 74);
-        }
-        footer{
-            background-color:black;
-            color:aliceblue;
-            text-align:center;
-            font-family:"Ubuntu",sans-serif;
-            font-size:smaller;
-        }
+      body {
+        background-image: url(./asset/images/bg.jpg);
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        font-family: "ubuntu", sans-serif;
+        z-index: 5;
+        opacity: 100%;
+      }
+      .heading {
+        font-weight: 700;
+        color: rgb(84, 74, 74);
+      }
+      .heading2 {
+        font-weight: 500;
+        color: rgb(84, 74, 74);
+      }
+      footer {
+        background-color: black;
+        color: aliceblue;
+        text-align: center;
+        font-family: "Ubuntu", sans-serif;
+        font-size: smaller;
+      }
+      .custom-nav-style {
+        user-select: none;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        margin-bottom: 12%;
+      }
+      .custom-flash-container {
+        margin-top: 30vh;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- navigation bar -->
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Weather App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-expand-lg bg-light custom-nav-style">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="pointer-events: none"
+          >Weather App</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Most searched
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" onclick="TopWeathers(this)">Delhi</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="TopWeathers(this)"
+                    >Mumbai</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="TopWeathers(this)"
+                    >Lucknow</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              id="city"
+              class="form-control me-2"
+              type="search"
+              placeholder="Enter city name"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit" id="submit">
+              Search
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Most searched
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Delhi</a></li>
-                            <li><a class="dropdown-item" href="#">Seattle</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Banglore</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-                <form class="d-flex" role="search">
-                    <input id="city" class="form-control me-2" type="search" placeholder="Enter city name"
-                        aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
-                </form>
-            </div>
+          </form>
         </div>
+      </div>
     </nav>
 
-
-
-
-
     <!-- flash cards -->
-    <div class="container">
-        <!-- <h1 id="win"></h1> -->
-        <h1 class="my-4 text-center heading">Weather for <span id="cityName"></span></h1>
-        <main>
-            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                        <div class="card-header py-3 text-bg-primary border-primary">
-                            <h4 class="my-0 fw-normal">Temperature</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title"><span id="temp"></span><small
-                                    class="text-muted fw-light"> <span>&#8451;</span></small>
-                            </h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-
-                                <li>Max Temperature is <span id="max_temp"></span> <span>&#8451;</span></li>
-                                <li>Min Temperature is <span id="min_temp"></span> <span>&#8451;</span></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                        <div class="card-header py-3 border-primary">
-                            <h4 class="my-0 fw-normal">Humidity info</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title"><span id="humidity"></span><small
-                                    class="text-muted fw-light"> %</small>
-                            </h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>Feels Like <span id="feels_like"></span> <span>&#8451;</span></li>
-                                <li>Wind Degrees is <span id="wind_degrees"></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                        <div class="card-header py-3 text-bg-primary border-primary">
-                            <h4 class="my-0 fw-normal">Wind info</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title"><span id="wind_speed"></span><small
-                                    class="text-muted fw-light"> km/h</small>
-                            </h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>Sunrise Time is <span id="rise"></span></li>
-                                <li>Sunset Time is <span id="set"></span></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <div class="container custom-flash-container">
+      <h1 class="my-4 text-center heading" id="cityName">Enter City Name</h1>
+      <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Temperature</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="temp"></span
+                  ><small class="text-muted fw-light">
+                    <span>&#8451;</span></small
+                  >
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>
+                    Max Temperature is <span id="max_temp"></span>
+                    <span>&#8451;</span>
+                  </li>
+                  <li>
+                    Min Temperature is <span id="min_temp"></span>
+                    <span>&#8451;</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-
-            <h2 class="display-6 text-center mb-4 heading2">Weather of other places</h2>
-
-            <div class="table-responsive">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th style="width: 30%"></th>
-                            <th style="width: 22%;"> Cloud Pct </th>
-                            <th style="width: 22%;"> Feels Like </th>
-                            <th style="width: 22%;"> Humidity </th>
-                            <th style="width: 22%;"> Max Temp </th>
-                            <th style="width: 22%;"> Min Temp </th>
-                            <th style="width: 22%;"> Sunrise </th>
-                            <th style="width: 22%;"> Sunset </th>
-                            <th style="width: 22%;"> Temperature </th>
-                            <th style="width: 22%;"> Wind Degrees </th>
-                            <th style="width: 22%;"> Wind Speed </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="text-start">Shanghai</th>
-                            <td><span id="cloud_pct2"></span></td>
-                            <td><span id="feels_like2"></span> <span>&#8451;</span></td>
-                            <td><span id="humidity2"></span></td>
-                            <td><span id="max_temp2"></span> <span>&#8451;</span></td>
-                            <td><span id="min_temp2"></span> <span>&#8451;</span></td>
-                            <td><span id="risesh"></span></td>
-                            <td><span id="setsh"></span></td>
-                            <td><span id="temp2"></span> <span>&#8451;</span></td>
-                            <td><span id="wind_degrees2"></span></td>
-                            <td><span id="wind_speed2"></span> km/h</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-start">Washington</th>
-                            <td><span id="cloud_pct3"></span></td>
-                            <td><span id="feels_like3"></span> <span>&#8451;</span></td>
-                            <td><span id="humidity3"></span></td>
-                            <td><span id="max_temp3"></span> <span>&#8451;</span></td>
-                            <td><span id="min_temp3"></span> <span>&#8451;</span></td>
-                            <td><span id="risewa"></span></td>
-                            <td><span id="setwa"></span></td>
-                            <td><span id="temp3"></span> <span>&#8451;</span></td>
-                            <td><span id="wind_degrees3"></span></td>
-                            <td><span id="wind_speed3"></span> km/h</td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="text-start">Lucknow</th>
-                            <td><span id="cloud_pct4"></span></td>
-                            <td><span id="feels_like4"></span> <span>&#8451;</span></td>
-                            <td><span id="humidity4"></span></td>
-                            <td><span id="max_temp4"></span> <span>&#8451;</span></td>
-                            <td><span id="min_temp4"></span> <span>&#8451;</span></td>
-                            <td><span id="riselu"></span></td>
-                            <td><span id="setlu"></span></td>
-                            <td><span id="temp4"></span> <span>&#8451;</span></td>
-                            <td><span id="wind_degrees4"></span></td>
-                            <td><span id="wind_speed4"></span> km/h</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-start">Kolkata</th>
-                            <td><span id="cloud_pct5"></span></td>
-                            <td><span id="feels_like5"></span> <span>&#8451;</span></td>
-                            <td><span id="humidity5"></span></td>
-                            <td><span id="max_temp5"></span> <span>&#8451;</span></td>
-                            <td><span id="min_temp5"></span> <span>&#8451;</span></td>
-                            <td><span id="riseko"></span></td>
-                            <td><span id="setko"></span></td>
-                            <td><span id="temp5"></span> <span>&#8451;</span></td>
-                            <td><span id="wind_degrees5"></span></td>
-                            <td><span id="wind_speed5"></span> km/h</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-start">Chennai</th>
-                            <td><span id="cloud_pct6"></span></td>
-                            <td><span id="feels_like6"></span> <span>&#8451;</span></td>
-                            <td><span id="humidity6"></span></td>
-                            <td><span id="max_temp6"></span> <span>&#8451;</span></td>
-                            <td><span id="min_temp6"></span> <span>&#8451;</span></td>
-                            <td><span id="risech"></span></td>
-                            <td><span id="setch"></span></td>
-                            <td><span id="temp6"></span> <span>&#8451;</span></td>
-                            <td><span id="wind_degrees6"></span></td>
-                            <td><span id="wind_speed6"></span> km/h</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-start">Maharashtra</th>
-                            <td><span id="cloud_pct7"></span></td>
-                            <td><span id="feels_like7"></span> <span>&#8451;</span></td>
-                            <td><span id="humidity7"></span></td>
-                            <td><span id="max_temp7"></span> <span>&#8451;</span></td>
-                            <td><span id="min_temp7"></span> <span>&#8451;</span></td>
-                            <td><span id="risema"></span></td>
-                            <td><span id="setma"></span></td>
-                            <td><span id="temp7"></span> <span>&#8451;</span></td>
-                            <td><span id="wind_degrees7"></span></td>
-                            <td><span id="wind_speed7"></span>km/h</td>
-                        </tr>
-                    </tbody>
-                </table>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 border-primary">
+                <h4 class="my-0 fw-normal">Humidity info</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="humidity"></span
+                  ><small class="text-muted fw-light"> %</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>
+                    Feels Like <span id="feels_like"></span>
+                    <span>&#8451;</span>
+                  </li>
+                  <li>Wind Degrees is <span id="wind_degrees"></span></li>
+                </ul>
+              </div>
             </div>
-        </main>
-    </div>
-     <footer>
-        <div class="center">
-            Copyright &copy; Rishabh Tripathi. All rights reserved!
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Wind info</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="wind_speed"></span
+                  ><small class="text-muted fw-light"> km/h</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>Sunrise Time is <span id="rise"></span></li>
+                  <li>Sunset Time is <span id="set"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <h1 class="my-4 text-center heading">Weather of other places</h1>
+
+        <div
+          class="table-responsive"
+          style="width: 100%; overflow: auto; scrollbar-width: none"
+        >
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th style="width: 30%"></th>
+                <th style="width: 22%">Temperature</th>
+                <th style="width: 22%">Feels Like</th>
+                <th style="width: 22%">Humidity</th>
+                <th style="width: 22%">Max Temp</th>
+                <th style="width: 22%">Min Temp</th>
+                <th style="width: 22%">Sunrise</th>
+                <th style="width: 22%">Sunset</th>
+                <th style="width: 22%">Wind Degrees</th>
+                <th style="width: 22%">Wind Speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">Shanghai</th>
+                <td><span id="temp2"></span> <span>&#8451;</span></td>
+
+                <td><span id="feels_like2"></span> <span>&#8451;</span></td>
+                <td><span id="humidity2"></span></td>
+                <td><span id="max_temp2"></span> <span>&#8451;</span></td>
+                <td><span id="min_temp2"></span> <span>&#8451;</span></td>
+                <td><span id="risesh"></span></td>
+                <td><span id="setsh"></span></td>
+                <td><span id="wind_degrees2"></span></td>
+                <td><span id="wind_speed2"></span> km/h</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Washington</th>
+
+                <td><span id="temp3"></span> <span>&#8451;</span></td>
+                <td><span id="feels_like3"></span> <span>&#8451;</span></td>
+                <td><span id="humidity3"></span></td>
+                <td><span id="max_temp3"></span> <span>&#8451;</span></td>
+                <td><span id="min_temp3"></span> <span>&#8451;</span></td>
+                <td><span id="risewa"></span></td>
+                <td><span id="setwa"></span></td>
+                <td><span id="wind_degrees3"></span></td>
+                <td><span id="wind_speed3"></span> km/h</td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">Lucknow</th>
+
+                <td><span id="temp4"></span> <span>&#8451;</span></td>
+                <td><span id="feels_like4"></span> <span>&#8451;</span></td>
+                <td><span id="humidity4"></span></td>
+                <td><span id="max_temp4"></span> <span>&#8451;</span></td>
+                <td><span id="min_temp4"></span> <span>&#8451;</span></td>
+                <td><span id="riselu"></span></td>
+                <td><span id="setlu"></span></td>
+                <td><span id="wind_degrees4"></span></td>
+                <td><span id="wind_speed4"></span> km/h</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Kolkata</th>
+
+                <td><span id="temp5"></span> <span>&#8451;</span></td>
+                <td><span id="feels_like5"></span> <span>&#8451;</span></td>
+                <td><span id="humidity5"></span></td>
+                <td><span id="max_temp5"></span> <span>&#8451;</span></td>
+                <td><span id="min_temp5"></span> <span>&#8451;</span></td>
+                <td><span id="riseko"></span></td>
+                <td><span id="setko"></span></td>
+                <td><span id="wind_degrees5"></span></td>
+                <td><span id="wind_speed5"></span> km/h</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Chennai</th>
+
+                <td><span id="temp6"></span> <span>&#8451;</span></td>
+                <td><span id="feels_like6"></span> <span>&#8451;</span></td>
+                <td><span id="humidity6"></span></td>
+                <td><span id="max_temp6"></span> <span>&#8451;</span></td>
+                <td><span id="min_temp6"></span> <span>&#8451;</span></td>
+                <td><span id="risech"></span></td>
+                <td><span id="setch"></span></td>
+                <td><span id="wind_degrees6"></span></td>
+                <td><span id="wind_speed6"></span> km/h</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Maharashtra</th>
+
+                <td><span id="temp7"></span> <span>&#8451;</span></td>
+                <td><span id="feels_like7"></span> <span>&#8451;</span></td>
+                <td><span id="humidity7"></span></td>
+                <td><span id="max_temp7"></span> <span>&#8451;</span></td>
+                <td><span id="min_temp7"></span> <span>&#8451;</span></td>
+                <td><span id="risema"></span></td>
+                <td><span id="setma"></span></td>
+                <td><span id="wind_degrees7"></span></td>
+                <td><span id="wind_speed7"></span>km/h</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <footer>
+      <div class="center">
+        Copyright &copy; Rishabh Tripathi. All rights reserved!
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>
